@@ -10,9 +10,18 @@ public class CalcDivTest extends BeforeAfterTestMethods{
         double actual = calculator.div(a, b);
         assertEquals(actual, expected, 1E-323);
 
-    }@Test(dataProviderClass = DataProviders.class, dataProvider = "long values for division")
+    }
+
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "long values for division")
     public void divLongValuesTest(long a, long b, long expected) {
         long actual = calculator.div(a, b);
         assertEquals(actual, expected, 1E-323);
+    }
+
+    @Test(dataProviderClass = DataProviders.class,
+            dataProvider = "long values for division exceptions",
+            expectedExceptions = NumberFormatException.class)
+    public void divLongExceptionValuesTest(long a, long b) throws NumberFormatException {
+        long actual = calculator.div(a, b);
     }
 }
