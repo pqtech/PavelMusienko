@@ -1,6 +1,7 @@
 package hw1;
 
 import org.testng.annotations.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class CalcSqrtTest extends BeforeAfterTestMethods {

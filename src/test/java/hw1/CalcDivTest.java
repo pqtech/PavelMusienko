@@ -1,9 +1,10 @@
 package hw1;
 
 import org.testng.annotations.Test;
+
 import static org.junit.Assert.assertEquals;
 
-public class CalcDivTest extends BeforeAfterTestMethods{
+public class CalcDivTest extends BeforeAfterTestMethods {
 
     @Test(dataProviderClass = DataProviders.class, dataProvider = "double values for division")
     public void divDoubleValuesTest(double a, double b, double expected) {
