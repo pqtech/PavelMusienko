@@ -21,7 +21,18 @@ public class DataProviders {
                 {625L, 25L, 25L},
                 {-99L, 3L, -33L},
                 {-10000900012300L, -100000000001123L, 0L},
-                {0L, -1, 0L},
+                {0L, -1L, 0L},
+        };
+    }
+
+    @DataProvider(name = "long values for division exceptions")
+    public static Object[][] correctLongDivExceptionValuesData() {
+        return new Object[][]{
+                {0L, 0L},
+                {625L, 0L},
+                {-5L, 0L},
+                {Long.MAX_VALUE, 0L},
+                {Long.MIN_VALUE, 0L},
         };
     }
 
