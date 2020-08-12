@@ -9,13 +9,13 @@ public class BeforeAfterTestMethods {
 
     @BeforeClass
     public void before() {
-//        System.out.println("Before Class Method");
+        //        System.out.println("Before Class Method");
         calculator = new Calculator();
     }
 
     @AfterClass
     public void after() {
-//        System.out.println("After Class Method");
+        //        System.out.println("After Class Method");
         calculator = null;
     }
 }
