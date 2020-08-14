@@ -16,6 +16,7 @@
         <calculator.version>1.0</calculator.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
+        <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
     </properties>
 
     <dependencies>
@@ -29,6 +30,11 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium-chrome-driver.version}</version>
         </dependency>
     </dependencies>
 
