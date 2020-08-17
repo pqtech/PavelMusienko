@@ -66,11 +66,11 @@ public class ServiceTabTests extends GeneralTests {
     @Test(priority = 9)
     public void selectCheckboxesTest() {
         // 11. Select checkboxes
-        driver.findElement(By.xpath("//div//div//div//div[2]//label[1]//input[1]")).click();
-        driver.findElement(By.xpath("//div//div//div//div[2]//label[3]//input[1]")).click();
-        assertTrue(driver.findElement(By.xpath("//div//div//div//div[2]//label[1]//input[1]"))
+        driver.findElement(By.xpath("//label[@class='label-checkbox'][1]/input")).click();
+        driver.findElement(By.xpath("//label[@class='label-checkbox'][3]/input")).click();
+        assertTrue(driver.findElement(By.xpath("//label[@class='label-checkbox'][1]/input"))
                 .isSelected());
-        assertTrue(driver.findElement(By.xpath("//div//div//div//div[2]//label[3]//input[1]"))
+        assertTrue(driver.findElement(By.xpath("//label[@class='label-checkbox'][3]/input"))
                 .isSelected());
     }
 
@@ -87,8 +87,8 @@ public class ServiceTabTests extends GeneralTests {
     @Test(priority = 11)
     public void selectRadioTest() {
         // 13. Select radio
-        driver.findElement(By.xpath("//div[3]//label[4]//input[1]")).click();
-        assertTrue(driver.findElement(By.xpath("//div[3]//label[4]//input[1]"))
+        driver.findElement(By.xpath("//label[@class='label-radio'][4]/input")).click();
+        assertTrue(driver.findElement(By.xpath("//label[@class='label-radio'][4]/input"))
                 .isDisplayed());
     }
 
@@ -120,11 +120,11 @@ public class ServiceTabTests extends GeneralTests {
     @Test(priority = 15)
     public void unselectCheckboxesTest() {
         // 17. Unselect and assert checkboxes
-        driver.findElement(By.xpath("//div//div//div//div[2]//label[1]//input[1]")).click();
-        driver.findElement(By.xpath("//div//div//div//div[2]//label[3]//input[1]")).click();
-        assertFalse(driver.findElement(By.xpath("//div//div//div//div[2]//label[1]//input[1]"))
+        driver.findElement(By.xpath("//label[@class='label-checkbox'][1]/input")).click();
+        driver.findElement(By.xpath("//label[@class='label-checkbox'][3]/input")).click();
+        assertFalse(driver.findElement(By.xpath("//label[@class='label-checkbox'][1]/input"))
                 .isSelected());
-        assertFalse(driver.findElement(By.xpath("//div//div//div//div[2]//label[3]//input[1]"))
+        assertFalse(driver.findElement(By.xpath("//label[@class='label-checkbox'][3]/input"))
                 .isSelected());
     }
 
