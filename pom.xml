@@ -16,6 +16,8 @@
         <calculator.version>1.0</calculator.version>
         <maven-surefire-plugin.version>2.22.1</maven-surefire-plugin.version>
         <maven-checkstyle-plugin.version>3.1.1</maven-checkstyle-plugin.version>
+        <selenium-chrome-driver.version>3.141.59</selenium-chrome-driver.version>
+        <selenium-support.version>3.141.59</selenium-support.version>
     </properties>
 
     <dependencies>
@@ -29,6 +31,16 @@
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-chrome-driver</artifactId>
+            <version>${selenium-chrome-driver.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-support</artifactId>
+            <version>${selenium-support.version}</version>
         </dependency>
     </dependencies>
 
@@ -117,6 +129,24 @@
                         <configuration>
                             <suiteXmlFiles>
                                 <suiteXmlFile>src/test/resources/multAndDivTests.xml</suiteXmlFile>
+                            </suiteXmlFiles>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>hw2 tests</id>
+            <properties/>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven-surefire-plugin.version}</version>
+                        <configuration>
+                            <suiteXmlFiles>
+                                <suiteXmlFile>src/test/resources/hw2Tests.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
