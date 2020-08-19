@@ -1,19 +1,21 @@
 package hw3;
 
+import hw3.pages.MainPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import static hw3.steps.MainPageSteps.*;
 
 import static org.testng.Assert.assertEquals;
 
 public class GeneralTests {
 
     protected WebDriver driver;
+    protected MainPage mainPage;
     String driverPath = "C:/dev/chromedriver/chromedriver.exe";
-    String pageUrl = "https://jdi-testing.github.io/jdi-light/index.html";
     String userName = "Roman";
     String password = "Jdi1234";
     String expectedUserName = "ROMAN IOVLEV";
@@ -24,13 +26,14 @@ public class GeneralTests {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         // 1. Open test site by URL
-        driver.navigate().to(pageUrl);
+        mainPage = new MainPage(driver);
+        mainPage.openMainPage();
     }
 
     @Test(priority = 1)
     public void mainPageTitleBeforeLoginTest() {
         // 2. Assert Browser title
-        assertEquals(driver.getTitle(), "Home Page");
+        checkMainPageTitle(mainPage);
     }
 
     @Test(priority = 2)
