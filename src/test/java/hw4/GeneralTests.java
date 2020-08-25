@@ -1,6 +1,9 @@
 package hw4;
 
 import hw4.pages.MainPage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Stories;
+import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -29,12 +32,18 @@ public class GeneralTests {
 
     }
 
+    @Feature(value = "Site testing")
+    @Stories(value = {@Story(value = "Main page functionality"),
+            @Story(value = "Service page functionality")})
     @Test(priority = 1)
     public void mainPageTitleBeforeLoginTest() {
         // 2. Assert Browser title
         checkMainPageTitle(mainPage);
     }
 
+    @Feature(value = "Site testing")
+    @Stories(value = {@Story(value = "Main page functionality"),
+            @Story(value = "Service page functionality")})
     @Test(priority = 2)
     public void mainPageLoginTest() throws IOException {
         // 3. Perform login
