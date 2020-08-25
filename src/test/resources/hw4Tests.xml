@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="hw4 Tests" verbose="1">
+    <listeners>
+        <listener class-name="hw4.listener.Listener"/>
+    </listeners>
+    <test name="h4 Tests">
+        <classes>
+            <class name="hw4.ex1.MainPageTests"/>
+            <class name="hw4.ex2.ServiceTabTests"/>
+            <class name="hw4.FailTest"/>
+        </classes>
+    </test>
+</suite>
