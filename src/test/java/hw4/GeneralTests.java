@@ -1,9 +1,11 @@
 package hw4;
 
 import hw4.pages.MainPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -18,12 +20,10 @@ public class GeneralTests {
 
     protected WebDriver driver;
     protected MainPage mainPage;
-    String driverPath = "C:/dev/chromedriver/chromedriver.exe";
-
 
     @BeforeClass
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         // 1. Open test site by URL

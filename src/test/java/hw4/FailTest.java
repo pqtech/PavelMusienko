@@ -1,6 +1,7 @@
 package hw4;
 
 import hw4.pages.MainPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
@@ -20,12 +21,10 @@ public class FailTest {
 
     protected WebDriver driver;
     protected MainPage mainPage;
-    String driverPath = "C:/dev/chromedriver/chromedriver.exe";
-
 
     @BeforeClass
     public void setUp(ITestContext context) {
-        System.setProperty("webdriver.chrome.driver", driverPath);
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         // 1. Open test site by URL
