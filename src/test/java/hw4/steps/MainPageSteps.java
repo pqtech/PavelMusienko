@@ -2,6 +2,7 @@ package hw4.steps;
 
 import hw4.pages.MainPage;
 import hw4.pages.ServicePage;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebElement;
 
 import java.io.IOException;
@@ -10,18 +11,23 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class MainPageSteps {
+
+    @Step(value = "Checking if Main page title is correct")
     public static void checkMainPageTitle(MainPage mainPage) {
         assertEquals(mainPage.getPageTitle(), "Home Page");
     }
 
+    @Step(value = "Logging in")
     public static void performLogin(MainPage mainPage) throws IOException {
         mainPage.loginUser();
     }
 
+    @Step(value = "Checking if User's name is correct")
     public static void checkPageUserName(MainPage mainPage) {
         assertEquals(mainPage.getPageUserName(), "ROMAN IOVLEV");
     }
 
+    @Step(value = "Checking Header section")
     public static void checkHeaderSection(MainPage mainPage) {
         assertTrue(mainPage.isHomeMenuTabDisplayed());
         assertTrue(mainPage.isContactFormMenuTabDisplayed());
@@ -33,6 +39,7 @@ public class MainPageSteps {
         assertEquals(mainPage.getMetalColorsMenuTabText(), "METALS & COLORS");
     }
 
+    @Step(value = "Checking 4 images")
     public static void checkImages(MainPage mainPage) {
         assertEquals(mainPage.getImages().size(), 4);
         for (WebElement element : mainPage.getImages()) {
@@ -40,6 +47,7 @@ public class MainPageSteps {
         }
     }
 
+    @Step(value = "Checking text under each image")
     public static void checkTextsUnderImages(MainPage mainPage) {
         String text1 = "To include good practices\n"
                 + "and ideas from successful\n"
@@ -57,6 +65,7 @@ public class MainPageSteps {
         assertEquals(mainPage.getTextsUnderImages().get(3).getText(), text4);
     }
 
+    @Step(value = "Checking main headers")
     public static void checkMainHeaders(MainPage mainPage) {
         String mainHeaderText1 = "EPAM FRAMEWORK WISHES…";
         String mainHeaderText2 = "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, "
@@ -68,40 +77,49 @@ public class MainPageSteps {
         assertEquals(mainPage.getMainHeader2Text(), mainHeaderText2);
     }
 
+    @Step(value = "Checking if frame exists")
     public static void checkIfFrameExists(MainPage mainPage) {
         assertTrue(mainPage.getIframesAmount() > 0);
     }
 
+    @Step(value = "Checking EPAM logo")
     public static void checkEpamLogo(MainPage mainPage) {
         assertTrue(mainPage.isEpamLogoDisplayed());
     }
 
+    @Step(value = "Checking Github link text")
     public static void checkGithubLinkText(MainPage mainPage) {
         assertEquals(mainPage.getGithubLinkText(), "JDI GITHUB");
     }
 
+    @Step(value = "Checking Github link url")
     public static void checkGithubLinkUrl(MainPage mainPage) {
         assertEquals(mainPage.getGithubLinkUrl(), "https://github.com/epam/JDI");
     }
 
+    @Step(value = "Checking left section")
     public static void checkLeftSection(MainPage mainPage) {
         assertTrue(mainPage.isLeftSectionDisplayed());
     }
 
+    @Step(value = "Checking footer")
     public static void checkFooter(MainPage mainPage) {
         assertTrue(mainPage.isFooterDisplayed());
     }
 
+    @Step(value = "Checking if upper dropdown menu contains elements")
     public static void checkIfDropdownMenuContainsElements(MainPage mainPage) {
         mainPage.clickServiceMenuTab();
         assertEquals(mainPage.getServiceDropdownMenuElementsAmount(), 9);
     }
 
+    @Step(value = "Checking if left dropdown menu contains elements")
     public static void checkIfLeftDropdownMenuContainsElements(MainPage mainPage) {
         mainPage.clickServiceLeftMenuTab();
         assertEquals(mainPage.getServiceLeftDropdownMenuElementsAmount(), 9);
     }
 
+    @Step(value = "Opening Service page")
     public static ServicePage openServicePage(MainPage mainPage) {
         mainPage.clickServiceMenuTab();
         return mainPage.clickServicePageMenuOption();
