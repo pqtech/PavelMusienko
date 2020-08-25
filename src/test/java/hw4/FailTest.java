@@ -6,6 +6,7 @@ import io.qameta.allure.Stories;
 import io.qameta.allure.Story;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -39,7 +40,8 @@ public class FailTest {
     @Test(priority = 1)
     public void mainPageTitleBeforeLoginTest() {
         // 2. Assert Browser title
-        checkMainPageTitle(null);
+        checkMainPageTitle(mainPage);
+        Assert.fail("Something went wrong...");
     }
 
     @Feature(value = "Site testing")
