@@ -8,6 +8,7 @@ import io.qameta.allure.Story;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -16,20 +17,20 @@ import java.io.IOException;
 
 import static hw4.steps.MainPageSteps.*;
 
-public class GeneralTests {
+public abstract class GeneralTests {
 
     protected WebDriver driver;
     protected MainPage mainPage;
 
     @BeforeClass
-    public void setUp() {
+    public void setUp(ITestContext context) {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         // 1. Open test site by URL
         mainPage = new MainPage(driver);
         mainPage.openMainPage();
-
+        context.setAttribute("driver", driver);
     }
 
     @Feature(value = "Site testing")
