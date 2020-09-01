@@ -10,8 +10,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
-public class MainPage {
-    protected WebDriver driver;
+public class MainPage extends BasePage {
+
     String pageUrl = "https://jdi-testing.github.io/jdi-light/index.html";
 
     @FindBy(className = "profile-photo")
@@ -38,10 +38,6 @@ public class MainPage {
 
     public void openMainPage() {
         driver.navigate().to(pageUrl);
-    }
-
-    public String getPageTitle() {
-        return driver.getTitle();
     }
 
     public void loginUser() throws IOException {

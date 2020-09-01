@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class UserTablePage {
-
-    protected WebDriver driver;
+public class UserTablePage extends BasePage {
 
     @FindBy(tagName = "select")
     private List<WebElement> dropDownList;
@@ -31,10 +29,6 @@ public class UserTablePage {
     public UserTablePage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-    }
-
-    public String getPageTitle() {
-        return driver.getTitle();
     }
 
     public List<WebElement> getDropDownList() {

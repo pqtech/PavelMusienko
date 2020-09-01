@@ -8,9 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
-public class ServicePage {
-
-    protected WebDriver driver;
+public class ServicePage extends BasePage {
 
     @FindBy(xpath = "//label[@class='label-checkbox'][1]/input")
     private WebElement checkboxWater;
