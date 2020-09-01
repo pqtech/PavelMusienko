@@ -18,13 +18,13 @@ public class AssertionSteps {
     UserTablePage userTablePage = new UserTablePage(TestContext.getInstance().getDriver());
 
     @Then("Browser title is equal to {string}")
-    public void browser_title_is_equal_to(String string) {
-        assertEquals(mainPage.getPageTitle(), string);
+    public void browser_title_is_equal_to(String mainPageTitle) {
+        assertEquals(mainPage.getPageTitle(), mainPageTitle);
     }
 
     @Then("Correct username {string} is shown on the Main Page")
-    public void correct_username_is_shown_on_the_Main_Page(String string) {
-        assertEquals(mainPage.getPageUserName(), string);
+    public void correct_username_is_shown_on_the_Main_Page(String userName) {
+        assertEquals(mainPage.getPageUserName(), userName);
     }
 
     @Then("Correct Water checkbox log is shown in the logs area")
@@ -48,28 +48,28 @@ public class AssertionSteps {
     }
 
     @Then("{string} page should be opened")
-    public void page_should_be_opened(String string) {
-        assertEquals(userTablePage.getPageTitle(), string);
+    public void page_should_be_opened(String userTablePageTitle) {
+        assertEquals(userTablePage.getPageTitle(), userTablePageTitle);
     }
 
     @Then("{int} Number Type Dropdowns should be displayed on Users Table on User Table Page")
-    public void number_Type_Dropdowns_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer int1) {
-        assertEquals((Integer) userTablePage.getDropDownList().size(), int1);
+    public void number_Type_Dropdowns_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer dropdownsCount) {
+        assertEquals((Integer) userTablePage.getDropDownList().size(), dropdownsCount);
     }
 
     @Then("{int} Usernames should be displayed on Users Table on User Table Page")
-    public void usernames_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer int1) {
-        assertEquals((Integer) userTablePage.getUserNameList().size(), int1);
+    public void usernames_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer usernamesCount) {
+        assertEquals((Integer) userTablePage.getUserNameList().size(), usernamesCount);
     }
 
     @Then("{int} Description texts under images should be displayed on Users Table on User Table Page")
-    public void description_texts_under_images_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer int1) {
-        assertEquals((Integer) userTablePage.getDescriptionList().size(), int1);
+    public void description_texts_under_images_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer descriptionsCount) {
+        assertEquals((Integer) userTablePage.getDescriptionList().size(), descriptionsCount);
     }
 
     @Then("{int} checkboxes should be displayed on Users Table on User Table Page")
-    public void checkboxes_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer int1) {
-        assertEquals((Integer) userTablePage.getCheckboxList().size(), int1);
+    public void checkboxes_should_be_displayed_on_Users_Table_on_User_Table_Page(Integer checkboxesCount) {
+        assertEquals((Integer) userTablePage.getCheckboxList().size(), checkboxesCount);
     }
 
     @Then("User table should contain following values:")
@@ -85,8 +85,8 @@ public class AssertionSteps {
     }
 
     @Then("One log row has {string} text in log section")
-    public void one_log_row_has_text_in_log_section(String string) {
-        assertTrue(userTablePage.logContainsCheckboxForSergey(string));
+    public void one_log_row_has_text_in_log_section(String logText) {
+        assertTrue(userTablePage.logContainsCheckboxForSergey(logText));
     }
 
 }
