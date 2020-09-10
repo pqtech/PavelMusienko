@@ -1,0 +1,241 @@
+{
+	"info": {
+		"_postman_id": "11956447-5f5d-4e3d-bd26-d7a53dc0c01f",
+		"name": "Pavel_Musienko_YandexSpeller",
+		"description": "API tests for the Yandex Speller service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check Incorrect Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a00f3178-d805-4f5e-8452-6b28ffb45829",
+						"exec": [
+							"pm.test(\"Status response is equal to 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct JSON response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"Web Service method name is not valid\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/checkTextt?text={{correctSingleWord}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"checkTextt"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{{correctSingleWord}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Multiple Correct Texts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4c8fdde5-a5ed-4dd7-8876-eff88da6f5b8",
+						"exec": [
+							"pm.test(\"Status response is equal to 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Json response is an array\", function () {\r",
+							"    const jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.be.an(\"array\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/checkTexts?text={{correctSingleWord}}&text={{correctSingleWord2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"checkTexts"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{{correctSingleWord}}"
+						},
+						{
+							"key": "text",
+							"value": "{{correctSingleWord2}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Multiple Incorrect Texts",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "58736a37-b2ec-4eb6-aa05-f1cd2dab2135",
+						"exec": [
+							"pm.test(\"Status response is equal to 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct actual words\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var actualCorrectWords = jsonData[0][0].s;\r",
+							"    pm.expect(actualCorrectWords).to.have\r",
+							"        .members(pm.environment.get(\"expectedCorrectWords\").split(\",\"));\r",
+							"    \r",
+							"    var actualCorrectWords2 = jsonData[1][0].s;\r",
+							"    pm.expect(actualCorrectWords2).to.have\r",
+							"        .members(pm.environment.get(\"expectedCorrectWords2\").split(\",\"));\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/checkTexts?text={{incorrectSingleWord}}&text={{incorrectSingleWord2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"checkTexts"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{{incorrectSingleWord}}"
+						},
+						{
+							"key": "text",
+							"value": "{{incorrectSingleWord2}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Single Incorrect Word",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c8dc5401-1439-449b-8d53-ffc6980623f3",
+						"exec": [
+							"pm.test(\"Status response is equal to 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct JSON response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"s\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct actual words\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var actualCorrectWords = jsonData[0].s;\r",
+							"    pm.expect(actualCorrectWords).to.have\r",
+							"        .members(pm.environment.get(\"expectedCorrectWords\").split(\",\"));\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/checkText?text={{incorrectSingleWord}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"checkText"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{{incorrectSingleWord}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Single Correct Word",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "030179c2-7835-49f3-b4db-8cb3eee10591",
+						"exec": [
+							"pm.test(\"Status response is equal to 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct JSON response\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"[]\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/checkText?text={{correctSingleWord}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"checkText"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "{{correctSingleWord}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
