@@ -1,0 +1,77 @@
+[
+    {
+        "name": "My First Board",
+        "desc": "test board description",
+        "descData": {
+            "emoji": {}
+        },
+        "closed": false,
+        "idOrganization": null,
+        "idEnterprise": null,
+        "limits": null,
+        "pinned": null,
+        "shortLink": "v7cXhHBc",
+        "powerUps": [],
+        "dateLastActivity": "2020-09-13T14:37:50.197Z",
+        "idTags": [],
+        "datePluginDisable": null,
+        "creationMethod": "assisted",
+        "ixUpdate": null,
+        "enterpriseOwned": false,
+        "idBoardSource": null,
+        "id": "5f5e2ebce3774d867d5ecffb",
+        "starred": false,
+        "url": "https://trello.com/b/v7cXhHBc/my-first-board",
+        "prefs": {
+            "permissionLevel": "private",
+            "hideVotes": false,
+            "voting": "disabled",
+            "comments": "members",
+            "invitations": "members",
+            "selfJoin": true,
+            "cardCovers": true,
+            "isTemplate": false,
+            "cardAging": "regular",
+            "calendarFeedEnabled": false,
+            "background": "lime",
+            "backgroundImage": null,
+            "backgroundImageScaled": null,
+            "backgroundTile": false,
+            "backgroundBrightness": "dark",
+            "backgroundColor": "#4BBF6B",
+            "backgroundBottomColor": "#4BBF6B",
+            "backgroundTopColor": "#4BBF6B",
+            "canBePublic": true,
+            "canBeEnterprise": true,
+            "canBeOrg": true,
+            "canBePrivate": true,
+            "canInvite": true
+        },
+        "subscribed": false,
+        "labelNames": {
+            "green": "",
+            "yellow": "",
+            "orange": "",
+            "red": "",
+            "purple": "",
+            "blue": "",
+            "sky": "",
+            "lime": "",
+            "pink": "",
+            "black": ""
+        },
+        "dateLastView": "2020-09-13T15:24:47.592Z",
+        "shortUrl": "https://trello.com/b/v7cXhHBc",
+        "templateGallery": null,
+        "premiumFeatures": [],
+        "memberships": [
+            {
+                "id": "5f5e2ebce3774d867d5ecffc",
+                "idMember": "5f5e2e7407c22c364c071fc5",
+                "memberType": "admin",
+                "unconfirmed": false,
+                "deactivated": false
+            }
+        ]
+    }
+]
