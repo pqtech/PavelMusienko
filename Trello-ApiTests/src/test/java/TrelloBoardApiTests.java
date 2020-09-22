@@ -1,7 +1,5 @@
 import beans.TrelloBoardCreationAnswer;
-import beans.TrelloBoardDeletionAnswer;
 import core.DataProvidersForTrelloBoard;
-import io.restassured.http.Method;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
@@ -18,25 +16,25 @@ public class TrelloBoardApiTests {
     @AfterClass
     public void tearDown() {
         if (boardId != null) {
-            TrelloBoardDeletionAnswer deletionResult = getBoardDeletionResult(
+            String deletionResult = getBoardDeletionResult(
                     requestBuilder()
                             .setApiKey()
                             .setApiToken()
-                            .setMethod(Method.DELETE)
                             .buildRequest()
                             .sendDeleteRequest(boardId));
-            assertThat("Deletion result is not correct!", deletionResult.getValue() == null);
+            assertThat("Deletion result is not correct!",
+                    deletionResult.contains("\"_value\":null"));
         }
     }
 
     @Test(priority = 0)
     public void checkBoardListIsEmpty() {
-        List<String> result = getStringResult2(
+        List<String> result = getStringResult(
                 requestBuilder()
                         .setApiKey()
                         .setApiToken()
                         .buildRequest()
-                        .sendGetRequest2());
+                        .sendGetRequest());
         assertThat("Boards list is not empty: " + result, result.isEmpty());
     }
 
@@ -47,7 +45,6 @@ public class TrelloBoardApiTests {
                         .setBoardName(boardFirstName)
                         .setApiKey()
                         .setApiToken()
-                        .setMethod(Method.POST)
                         .buildRequest()
                         .sendPostRequest());
         System.out.println("Result: " + result.getName());
@@ -64,7 +61,6 @@ public class TrelloBoardApiTests {
                         .setBoardDescription(description)
                         .setApiKey()
                         .setApiToken()
-                        .setMethod(Method.PUT)
                         .buildRequest()
                         .sendUpdateRequest(boardId));
         assertThat("Board description is not correct!",
@@ -79,7 +75,6 @@ public class TrelloBoardApiTests {
                         .setBoardName(name)
                         .setApiKey()
                         .setApiToken()
-                        .setMethod(Method.PUT)
                         .buildRequest()
                         .sendUpdateRequest(boardId));
         assertThat("Board name is not correct!",
@@ -93,7 +88,6 @@ public class TrelloBoardApiTests {
                         .setBoardClosedStatus("true")
                         .setApiKey()
                         .setApiToken()
-                        .setMethod(Method.PUT)
                         .buildRequest()
                         .sendUpdateRequest(boardId));
         assertThat("Board Closed Status is not correct!",
@@ -107,7 +101,6 @@ public class TrelloBoardApiTests {
                         .setBoardClosedStatus("false")
                         .setApiKey()
                         .setApiToken()
-                        .setMethod(Method.PUT)
                         .buildRequest()
                         .sendUpdateRequest(boardId));
         assertThat("Board Closed Status is not correct!",
