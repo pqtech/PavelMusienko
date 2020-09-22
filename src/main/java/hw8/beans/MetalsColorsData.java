@@ -1,20 +1,21 @@
 package hw8.beans;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MetalsColorsData {
 
-    private List<String> summary;
+    private List<Integer> summary;
     private List<String> elements;
     private String color;
     private String metals;
     private List<String> vegetables;
 
-    public List<String> getSummary() {
+    public List<Integer> getSummary() {
         return summary;
     }
 
-    public void setSummary(List<String> summary) {
+    public void setSummary(List<Integer> summary) {
         this.summary = summary;
     }
 
@@ -48,5 +49,15 @@ public class MetalsColorsData {
 
     public void setVegetables(List<String> vegetables) {
         this.vegetables = vegetables;
+    }
+
+    public List<String> getExpectedResults() {
+        return Arrays.asList(
+                "Summary: " + (summary.get(0) + summary.get(1)),
+                "Elements: " + elements.toString().replace("[", "").replace("]", ""),
+                "Color: " + color,
+                "Metal: " + metals,
+                "Vegetables: " + vegetables.toString().replace("[", "").replace("]", "")
+        );
     }
 }

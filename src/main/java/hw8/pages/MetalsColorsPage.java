@@ -1,5 +1,6 @@
 package hw8.pages;
 
+import com.epam.jdi.light.elements.common.UIElement;
 import com.epam.jdi.light.elements.complex.Checklist;
 import com.epam.jdi.light.elements.complex.WebList;
 import com.epam.jdi.light.elements.complex.dropdown.Dropdown;
@@ -11,10 +12,8 @@ import hw8.beans.MetalsColorsData;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.Arrays;
 import java.util.List;
-
-import static org.testng.Assert.assertTrue;
+import java.util.stream.Collectors;
 
 public class MetalsColorsPage extends WebPage {
 
@@ -75,10 +74,9 @@ public class MetalsColorsPage extends WebPage {
         }
     }
 
-    private void setSummary(List<String> values) {
-        for (String value : values) {
-            int intValue = Integer.valueOf(value);
-            if (intValue % 2 == 1) {
+    private void setSummary(List<Integer> values) {
+        for (Integer value : values) {
+            if (value % 2 == 1) {
                 setValue(value, oddRow);
             } else {
                 setValue(value, evenRow);
@@ -86,10 +84,10 @@ public class MetalsColorsPage extends WebPage {
         }
     }
 
-    private void setValue(String value, WebElement row) {
+    private void setValue(Integer value, WebElement row) {
         List<WebElement> list = row.findElements(By.cssSelector("p.radio"));
         for (WebElement element : list) {
-            if (element.getText().equals(value)) {
+            if (element.getText().equals(Integer.toString(value))) {
                 element.click();
             }
         }
@@ -101,38 +99,9 @@ public class MetalsColorsPage extends WebPage {
         }
     }
 
-    public void assertResults(MetalsColorsData expected) {
-        String summaryResult = "";
-        List<String> elementsResult = null;
-        String colorResult = "";
-        String metalResult = "";
-        List<String> vegetablesResult = null;
-
-        for (WebElement element : results) {
-            String string = element.getText();
-            String[] part = string.split(": |, ");
-            if (part[0].equals("Summary")) {
-                summaryResult = part[1];
-            } else if (part[0].equals("Color")) {
-                colorResult = part[1];
-            } else if (part[0].equals("Metal")) {
-                metalResult = part[1];
-            } else if (part[0].equals("Elements")) {
-                elementsResult = Arrays.asList(Arrays.copyOfRange(part, 1, part.length));
-            } else {
-                vegetablesResult = Arrays.asList(Arrays.copyOfRange(part, 1, part.length));
-            }
-        }
-
-        String expectedSummary = Integer.valueOf(expected.getSummary()
-                .get(0)) + Integer.valueOf(expected.getSummary().get(1)) + "";
-        assertTrue(summaryResult.equals(expectedSummary));
-        assertTrue(elementsResult.containsAll(expected
-                .getElements()) && expected.getElements().containsAll(elementsResult));
-        assertTrue(colorResult.equals(expected.getColor()));
-        assertTrue(metalResult.equals(expected.getMetals()));
-        assertTrue(vegetablesResult.containsAll(expected
-                .getVegetables()) && expected.getVegetables().containsAll(vegetablesResult));
+    public List<String> getResults() {
+        return results.stream()
+                .map(UIElement::getText)
+                .collect(Collectors.toList());
     }
-
 }

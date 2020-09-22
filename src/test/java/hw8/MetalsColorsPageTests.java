@@ -9,6 +9,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 import static com.epam.jdi.light.driver.WebDriverUtils.killAllSeleniumDrivers;
+import static org.testng.Assert.assertEquals;
 
 public class MetalsColorsPageTests {
 
@@ -30,6 +31,6 @@ public class MetalsColorsPageTests {
 
         JdiSite.homePage.openMetalsColorsPage();
         JdiSite.metalsColorsPage.performActions(testData);
-        JdiSite.metalsColorsPage.assertResults(testData);
+        assertEquals(JdiSite.metalsColorsPage.getResults(), testData.getExpectedResults());
     }
 }
